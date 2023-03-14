@@ -1,0 +1,6 @@
+/target
+/bin/*
+.*
+!.gitignore
+!.cargo
+cfg.toml

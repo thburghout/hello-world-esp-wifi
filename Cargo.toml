@@ -1,0 +1,32 @@
+[package]
+name = "hello-idf-world"
+version = "0.1.0"
+authors = ["Thomas Burghout <thomas.burghout@nedap.com>"]
+edition = "2021"
+resolver = "2"
+
+[profile.release]
+opt-level = "s"
+
+[profile.dev]
+debug = true # Symbols are nice and they don't increase the size on Flash
+opt-level = "s"
+
+[profile.dev.package.esp-wifi]
+opt-level = 3
+
+[features]
+pio = ["esp-idf-sys/pio"]
+
+[dependencies]
+esp-idf-sys = { version = "0.32.1", features = ["binstart"] }
+esp-wifi = { git = "https://github.com/esp-rs/esp-wifi.git", features = ["esp32c3", "wifi", "embedded-svc"] }
+toml-cfg = "0.1.3"
+anyhow = "1.0.69"
+embedded-svc = "0.24.0"
+esp-idf-svc = "0.45.0"
+log = "0.4.17"
+
+
+[build-dependencies]
+embuild = "0.31.0"
